@@ -1,5 +1,6 @@
 /* ==========================================================================
    JULIANA ZARH — animation.css
+   Versão otimizada: Cards instantâneos, animações mínimas
    ========================================================================== */
 
 :root {
@@ -7,7 +8,6 @@
     --anim-base:    200ms;
     --anim-slow:    300ms;
     --anim-slower:  400ms;
-    --anim-card-in: 250ms; /* Reduzido de 600ms para 250ms (abertura rápida) */
     --anim-modal:   250ms;
     --anim-ripple:  650ms;
 
@@ -22,15 +22,8 @@
 }
 
 @keyframes titleInUp {
-    0%   { opacity: 0; transform: translateY(42px) scale(0.92); filter: blur(7px); }
-    55%  { filter: blur(0); }
-    100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
-}
-
-@keyframes cardFadeUp {
-    0%   { opacity: 0; transform: translateY(30px) scale(0.97); filter: blur(4px); }
-    55%  { filter: blur(0); }
-    100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+    0%   { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes cardPulse {
@@ -66,10 +59,10 @@
     50%      { transform: translateX(-50%) translateY(-3px); }
 }
 
-/* Fundo: Animação reduzida (mais lenta e com menos zoom) */
+/* Fundo: Animação mínima (quase imperceptível) */
 @keyframes bgBreath {
     0%, 100% { transform: scale(1); }
-    50%      { transform: scale(1.02); } /* Reduzido de 1.06 para 1.02 */
+    50%      { transform: scale(1.01); }
 }
 
 @keyframes titleGlow {
@@ -79,15 +72,16 @@
 
 html { scroll-behavior: smooth; }
 
-/* Fundo: Duração aumentada para 45s para ficar bem sutil */
+/* Fundo: Animação super lenta e sutil */
 .page-bg {
-    animation: bgBreath 45s var(--ease-in-out) infinite;
+    animation: bgBreath 60s var(--ease-in-out) infinite;
     will-change: transform;
     transform-origin: center center;
 }
 
+/* Título: Animação rápida e simples */
 .hero-intro {
-    animation: titleInUp 800ms var(--ease-out) 100ms backwards;
+    animation: titleInUp 400ms var(--ease-out) 50ms backwards;
 }
 
 .hero-title {
@@ -95,12 +89,12 @@ html { scroll-behavior: smooth; }
     will-change: filter;
 }
 
-/* Cards: Cascata quase imediata */
+/* Cards: SEM ANIMAÇÃO - Aparecem instantaneamente */
 .card-item {
-    animation: cardFadeUp var(--anim-card-in) var(--ease-out) backwards;
-    /* Delay inicial de 100ms, com 40ms de intervalo entre cada card */
-    animation-delay: calc(var(--card-index, 0) * 40ms + 100ms);
-    will-change: transform, opacity, filter;
+    /* Nenhuma animação de entrada */
+    opacity: 1;
+    transform: none;
+    filter: none;
 }
 
 .card-item {
