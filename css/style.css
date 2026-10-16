@@ -1,5 +1,6 @@
 /* ==========================================================================
    JULIANA ZARH — style.css
+   Layout: fundo fixo + título com ícone + legenda + cards com borda branca.
    ========================================================================== */
 
 /* =========================================
@@ -11,6 +12,7 @@
     --color-text-soft: rgba(255, 255, 255, 0.75);
     --color-accent: #E8353C;
 
+    /* Cards — vidro claro com borda branca visível */
     --card-bg:              rgba(255, 255, 255, 0.08);
     --card-bg-hover:        rgba(255, 255, 255, 0.16);
     --card-border:          rgba(255, 255, 255, 0.50);
@@ -18,12 +20,15 @@
     --card-shadow:          0 8px 28px rgba(0, 0, 0, 0.30), inset 0 1px 0 rgba(255, 255, 255, 0.15);
     --card-shadow-hover:    0 12px 34px rgba(0, 0, 0, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.24);
 
+    /* Telegram (SVG inline) */
     --brand-telegram: #229ED9;
 
+    /* Raios */
     --radius-card:   20px;
     --radius-pill:   999px;
     --radius-circle: 50%;
 
+    /* Layout */
     --max-width: 480px;
     --scrollbar-compensation: 0px;
 }
@@ -31,7 +36,9 @@
 /* =========================================
    2. RESET / BASE
    ========================================= */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -142,12 +149,14 @@ body.modal-active {
     line-height: 1.06;
     letter-spacing: -0.03em;
     color: #fff;
-    text-shadow: 0 2px 28px rgba(0, 0, 0, 0.65), 0 1px 4px rgba(0, 0, 0, 0.50);
+    text-shadow:
+        0 2px 28px rgba(0, 0, 0, 0.65),
+        0 1px 4px rgba(0, 0, 0, 0.50);
 }
 
 .hero-title-icon {
-    width: 0.65em;
-    height: 0.65em;
+    width: 0.55em; /* Tamanho ajustado e organizado */
+    height: 0.55em;
     object-fit: contain;
     display: block;
     flex-shrink: 0;
@@ -163,7 +172,9 @@ body.modal-active {
     color: #fff;
     letter-spacing: 0.005em;
     text-align: center;
-    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.65), 0 1px 3px rgba(0, 0, 0, 0.45);
+    text-shadow:
+        0 2px 20px rgba(0, 0, 0, 0.65),
+        0 1px 3px rgba(0, 0, 0, 0.45);
     max-width: 100%;
     padding: 0 clamp(4px, 2vw, 12px);
 }
@@ -192,23 +203,32 @@ body.modal-active {
     justify-content: center;
     min-height: clamp(58px, 9vh, 72px);
     padding: 12px 68px;
+
     border-radius: var(--radius-card);
     background: var(--card-bg);
     border: 1px solid var(--card-border);
     box-shadow: var(--card-shadow);
+
     color: #fff;
     font-weight: 600;
     font-size: clamp(0.94rem, 2.6vw, 1.02rem);
     letter-spacing: 0.01em;
     text-align: center;
     text-decoration: none;
+
     cursor: pointer;
     overflow: hidden;
     isolation: isolate;
-    transition: background 0.22s ease, border-color 0.22s ease, transform 0.22s ease, box-shadow 0.25s ease;
+
+    transition:
+        background    0.22s ease,
+        border-color  0.22s ease,
+        transform     0.22s ease,
+        box-shadow    0.25s ease;
 }
 
-.card-item:hover, .card-item:focus-visible {
+.card-item:hover,
+.card-item:focus-visible {
     background: var(--card-bg-hover);
     border-color: var(--card-border-hover);
     box-shadow: var(--card-shadow-hover);
@@ -234,12 +254,15 @@ body.modal-active {
     left: 12px;
     top: 50%;
     transform: translateY(-50%);
+
     width: clamp(38px, 9vw, 46px);
     height: clamp(38px, 9vw, 46px);
+
     border-radius: var(--radius-circle);
     display: grid;
     place-items: center;
     overflow: hidden;
+
     z-index: 2;
     line-height: 0;
 }
@@ -261,9 +284,12 @@ body.modal-active {
     color: #fff;
 }
 
-.card-icon--vip, .card-icon--free {
+.card-icon--vip,
+.card-icon--free {
     background: var(--brand-telegram);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.20);
+    box-shadow:
+        0 4px 14px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.20);
 }
 
 /* =========================================
@@ -273,14 +299,24 @@ body.modal-active {
     position: fixed;
     inset: 0;
     z-index: 9999;
+
     display: grid;
     place-items: center;
-    padding: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) max(1rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
+
+    padding:
+        max(1rem, env(safe-area-inset-top))
+        max(1rem, env(safe-area-inset-right))
+        max(1rem, env(safe-area-inset-bottom))
+        max(1rem, env(safe-area-inset-left));
+
     background: rgba(0, 0, 0, 0.72);
+
     -webkit-backdrop-filter: blur(14px) saturate(120%);
     backdrop-filter: blur(14px) saturate(120%);
+
     opacity: 0;
     visibility: hidden;
+
     overscroll-behavior: contain;
     isolation: isolate;
     transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -295,7 +331,8 @@ body.modal-active {
     display: none !important;
 }
 
-.modal-overlay, .modal-container {
+.modal-overlay,
+.modal-container {
     pointer-events: auto;
 }
 
@@ -307,10 +344,19 @@ body.modal-active {
     overflow-y: auto;
     overscroll-behavior: contain;
     padding: 48px 24px 28px;
-    background: radial-gradient(120% 70% at 50% 0%, rgba(232, 53, 60, 0.12) 0%, transparent 55%), linear-gradient(145deg, #121319 0%, #08090d 100%);
+
+    background:
+        radial-gradient(120% 70% at 50% 0%, rgba(232, 53, 60, 0.12) 0%, transparent 55%),
+        linear-gradient(145deg, #121319 0%, #08090d 100%);
+
     border: 1px solid rgba(255, 255, 255, 0.16);
     border-radius: 24px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85), 0 0 40px rgba(255, 255, 255, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.85),
+        0 0 40px rgba(255, 255, 255, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
     text-align: center;
     isolation: isolate;
     scrollbar-width: thin;
@@ -346,7 +392,8 @@ body.modal-active {
     transition: background 0.2s ease, border-color 0.2s ease;
 }
 
-.modal-close-btn:hover, .modal-close-btn:focus-visible {
+.modal-close-btn:hover,
+.modal-close-btn:focus-visible {
     background: rgba(232, 53, 60, 0.22);
     border-color: rgba(255, 255, 255, 0.30);
     outline: none;
@@ -383,7 +430,9 @@ body.modal-active {
     letter-spacing: -1px;
     color: #fff;
     margin: 0 auto 20px;
-    box-shadow: 0 0 24px rgba(255, 255, 255, 0.06), inset 0 0 12px rgba(255, 255, 255, 0.05);
+    box-shadow:
+        0 0 24px rgba(255, 255, 255, 0.06),
+        inset 0 0 12px rgba(255, 255, 255, 0.05);
 }
 
 #modal-title::before {
@@ -444,13 +493,18 @@ body.modal-active {
     font-size: 14px;
     letter-spacing: 0.5px;
     border: 1px solid rgba(200, 200, 200, 0.35);
-    box-shadow: 0 4px 20px rgba(230, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    box-shadow:
+        0 4px 20px rgba(230, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
-.modal-btn-primary:hover, .modal-btn-primary:focus-visible {
+.modal-btn-primary:hover,
+.modal-btn-primary:focus-visible {
     filter: brightness(1.12);
     border-color: rgba(255, 255, 255, 0.30);
-    box-shadow: 0 6px 26px rgba(230, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    box-shadow:
+        0 6px 26px rgba(230, 0, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
     outline: none;
 }
 
@@ -464,7 +518,8 @@ body.modal-active {
     border: 1px solid rgba(255, 255, 255, 0.16);
 }
 
-.modal-btn-secondary:hover, .modal-btn-secondary:focus-visible {
+.modal-btn-secondary:hover,
+.modal-btn-secondary:focus-visible {
     color: #fff;
     background: rgba(255, 255, 255, 0.05);
     border-color: rgba(255, 255, 255, 0.30);
@@ -501,17 +556,39 @@ body.modal-active {
    9. RESPONSIVO
    ========================================= */
 @media (max-width: 480px) {
-    .modal-overlay { padding: 0.6rem; }
-    .modal-container { max-width: 100%; max-height: min(88vh, 88dvh); padding: 44px 18px 24px; }
-    .modal-subtitle { font-size: 20px; }
+    .modal-overlay {
+        padding: 0.6rem;
+    }
+    .modal-container {
+        max-width: 100%;
+        max-height: min(88vh, 88dvh);
+        padding: 44px 18px 24px;
+    }
+    .modal-subtitle {
+        font-size: 20px;
+    }
 }
 
 @media (max-width: 360px) {
-    .modal-container { padding: 40px 14px 20px; }
-    #modal-title { width: 74px; height: 74px; font-size: 28px; }
-    #modal-title::before { top: -22px; width: 28px; height: 18px; }
-    .modal-subtitle { font-size: 17px; }
-    .modal-description { font-size: 13px; }
+    .modal-container {
+        padding: 40px 14px 20px;
+    }
+    #modal-title {
+        width: 74px;
+        height: 74px;
+        font-size: 28px;
+    }
+    #modal-title::before {
+        top: -22px;
+        width: 28px;
+        height: 18px;
+    }
+    .modal-subtitle {
+        font-size: 17px;
+    }
+    .modal-description {
+        font-size: 13px;
+    }
 }
 
 /* =========================================
@@ -520,30 +597,4 @@ body.modal-active {
 :focus-visible {
     outline: 2px solid #fff;
     outline-offset: 3px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* =========================================
-   OVERRIDE — Ícone do título levemente menor
-   (colar no FINAL do css/style.css)
-   ========================================= */
-.hero-title-icon {
-    width: 0.55em;
-    height: 0.55em;
 }
