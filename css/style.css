@@ -521,3 +521,29 @@ body.modal-active {
     outline: 2px solid #fff;
     outline-offset: 3px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+   OVERRIDE — Ícone do título levemente menor
+   (colar no FINAL do css/style.css)
+   ========================================= */
+.hero-title-icon {
+    width: 0.55em;
+    height: 0.55em;
+}
