@@ -7,7 +7,7 @@
     --anim-base:    200ms;
     --anim-slow:    300ms;
     --anim-slower:  400ms;
-    --anim-card-in: 600ms;
+    --anim-card-in: 250ms; /* Reduzido de 600ms para 250ms (abertura rápida) */
     --anim-modal:   250ms;
     --anim-ripple:  650ms;
 
@@ -66,9 +66,10 @@
     50%      { transform: translateX(-50%) translateY(-3px); }
 }
 
+/* Fundo: Animação reduzida (mais lenta e com menos zoom) */
 @keyframes bgBreath {
     0%, 100% { transform: scale(1); }
-    50%      { transform: scale(1.06); }
+    50%      { transform: scale(1.02); } /* Reduzido de 1.06 para 1.02 */
 }
 
 @keyframes titleGlow {
@@ -78,8 +79,9 @@
 
 html { scroll-behavior: smooth; }
 
+/* Fundo: Duração aumentada para 45s para ficar bem sutil */
 .page-bg {
-    animation: bgBreath 22s var(--ease-in-out) infinite;
+    animation: bgBreath 45s var(--ease-in-out) infinite;
     will-change: transform;
     transform-origin: center center;
 }
@@ -93,9 +95,11 @@ html { scroll-behavior: smooth; }
     will-change: filter;
 }
 
+/* Cards: Cascata quase imediata */
 .card-item {
     animation: cardFadeUp var(--anim-card-in) var(--ease-out) backwards;
-    animation-delay: calc(var(--card-index, 0) * 75ms + 1900ms);
+    /* Delay inicial de 100ms, com 40ms de intervalo entre cada card */
+    animation-delay: calc(var(--card-index, 0) * 40ms + 100ms);
     will-change: transform, opacity, filter;
 }
 
